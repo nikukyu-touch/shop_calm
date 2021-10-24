@@ -1,0 +1,555 @@
+/* common */
+html {
+  font-size: 62.5%;
+  font-family: 'Comic Sans MS', cursive;
+  /* リンクアイコンのサイズ */
+  --common-link: 26px;
+  --midium-link: 26px;
+  --small-link: 18px;
+  --small-ECsite: 18px;
+}
+
+/* リンク付きテキストの色を変えない */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:visited {
+  color: inherit;
+}
+a[href^="tel:"]{
+  pointer-events: none;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+}
+
+body p,a {
+  font-size: 2.2rem;
+  line-height: 2.2rem;
+  margin: 1.2rem 0;
+}
+
+header {
+  position: relative;
+}
+
+header > img {
+  margin-top: 32px;
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+  object-position: 70% 10%;
+}
+
+header .link {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  z-index: 1;
+  justify-content: center;
+  background-color: white;
+}
+
+header .link h1 {
+  margin: auto 6rem;
+  font-size: 3.2rem;
+  font-weight: bold;
+  line-height: 3.2rem;
+  animation: fuwafuwa 3s infinite alternate ease-in-out ;
+}
+
+@keyframes fuwafuwa {
+  0% {
+    transform:translate(0, 0) rotate(-2deg);
+  }
+  50% {
+    transform:translate(0, -4px) rotate(0deg);
+  }
+  100% {
+    transform:translate(0, 0) rotate(2deg);
+  }
+}
+
+header .link ul {
+  list-style: none;
+  margin: auto 2% auto 18%;
+  padding: 0;
+  display: flex;
+}
+
+header .link ul li {
+  margin-left: 34px;
+  height: var(--common-link);
+}
+
+header .link ul a {
+  font: bolder 2.2rem sans-serif;
+  color: #3d3d3d;
+}
+
+header .link ul img {
+  vertical-align: baseline;
+  width: var(--common-link);
+  height: var(--common-link);
+}
+
+/* ECサイトロゴサイズの調整 */
+/* header .link li:nth-first-of-type(-n+2) img { */
+header .link li:first-of-type img {
+  width: auto;
+  height: var(--common-link);
+}
+
+.profile {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile img {
+  height: 150px;
+  /* border-radius: 50%; */
+  object-fit: cover;
+  align-self: center;
+}
+
+.explanation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  /* margin-bottom: 1rem; */
+  margin-left: 2rem;
+}
+
+.explanation h1 {
+  margin: 0 auto 0 2rem;
+  font-size: 5rem;
+  /* line-height: 4rem; */
+}
+
+.explanation p {
+  font-size: 2.6rem;
+  margin: 1.2rem 0;
+}
+
+.explanation > p:last-of-type {
+  padding-left: 1em;
+}
+
+.backgrnd {
+  margin-top: 30px;
+  width: 100%;
+  background: 47% 30%/cover url(../img/レディース・ファッション_m.jpg);
+}
+
+main .container {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#inside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+#inside li {
+  display: flex;
+}
+
+#inside li:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+#inside .pic  {
+  flex: 1;
+  height: 480px;
+}
+
+#inside .pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#inside .desc {
+  width: 22rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.information {
+  margin-top: 50px;
+  display: flex;
+  justify-content: right;
+}
+
+.overview {
+  width: 30rem;
+  text-align: left;
+  animation: slideIn 1.2s cubic-bezier(0, .21, 0, 1) 1 forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.overview > p:first-of-type {
+  margin-top: 0;
+}
+
+.fa-parking {
+  color: blue;
+}
+
+.address p {
+  margin: .8rem 0;
+}
+
+.overview > p:nth-last-of-type(2) {
+  margin: .8rem auto;
+}
+
+.overview a {
+  line-height: 3.8rem;
+}
+
+.overview img {
+  width: auto;
+  height: var(--midium-link);
+  vertical-align: text-bottom;
+}
+
+.overview > a:last-of-type {
+  font-size: 2rem;
+}
+
+.gmap {
+  width: 60%;
+  height: 0;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 40%;
+}
+
+.gmap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.facebook {
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+.facebook h1 {
+  font-size: 3rem;
+  margin: 5px auto;
+}
+
+.facebook iframe {
+  max-width: 500px;
+  width: 100%;
+}
+
+.goto-top {
+  text-align: left;
+}
+
+.goto-top a {
+  margin-left: 2rem;
+  font-size: 1.8rem;
+  font-weight: 550;
+}
+
+footer {
+  background-color: #5a69632c;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+footer i {
+  font-size: .8rem;
+}
+
+/* medium screen */
+@media (max-width: 1024px) {
+  /* header > img {
+    height: 60vh;
+  } */
+
+  /* SNSロゴ等が増えた場合は"flex: 1;" */
+  header .link h1 {
+    flex: 1;
+    /* max-width: 200px; */
+    margin: auto 4%;
+    /* font-size: 7.2rem; */
+  }
+
+  header .link ul {
+    flex: 2;
+    max-width: 360px;
+    justify-content: space-between;
+  }
+
+  header .link ul li {
+    margin: 0;
+  }
+
+  /* header .link ul a {
+    font-size: 2.6rem;
+  } */
+
+  header .link ul img {
+    width: var(--midium-link);
+    height: var(--midium-link);
+  }
+
+  /* ECサイトロゴサイズの調整 */
+  /* header .link li:nth-first-of-type(-n+2) img { */
+  header .link li:first-of-type img {
+    width: auto;
+    height: var(--midium-link);
+  }
+
+  .profile img {
+    width: 80px;
+  }
+
+  .explanation p {
+    font-size: 2.4rem;
+    margin: 1rem 0;
+  }
+
+  #inside .pic  {
+    height: 420px;
+  }
+
+  .information {
+    margin-top: 16px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .overview {
+    width: 34rem;
+    margin: 0 0 22px 8%;
+    animation: slideIn 1s cubic-bezier(0, .21, 0, 1) 1 forwards;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateY(180px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* .overview p {
+    line-height: 1.8rem;
+  } */
+
+  .address {
+    display: flex;
+  }
+
+  .address p {
+    margin: 0;
+  }
+
+  .overview > p:nth-last-of-type(2) {
+    padding-left: 6.5rem;
+    margin: 6px auto;
+  }
+
+  .overview > p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .gmap {
+    width: 95%;
+    margin: 0;
+    padding-bottom: 56.25%;
+  }
+
+  footer .keyword {
+    display: flex;
+    flex-direction: column;
+  }
+
+  footer i {
+    display: none;
+  }
+}
+
+/* small screen */
+@media (max-width: 599px) {
+
+  body p,a {
+    font-size: 1.6rem;
+  }
+
+  header > img {
+    margin-top: 24px;
+    height: 50vh;
+  }
+
+  header .link h1 {
+    flex: 1;
+    max-width: 106px;
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+    margin: 0;
+  }
+
+  header .link ul {
+    flex: 2;
+    max-width: 226px;
+    /* margin: auto 2px 0 16%; */
+    justify-content: space-between;
+  }
+
+  header .link ul li {
+    /* margin: 0 8px 0 0; */
+    height: var(--small-link);
+  }
+
+  header .link ul a {
+    font-size: 1.5rem;
+  }
+
+  header .link ul img {
+    width: var(--small-link);
+    height: var(--small-link);
+  }
+
+  /* ECサイトロゴサイズの調整 */
+  /* header .link li:nth-first-of-type(-n+2) { */
+  header .link li:first-of-type {
+    height: var(--small-ECsite);
+    /* margin: auto 0 0 0; */ /* ロゴを小さくした時かつ下揃え */
+  }
+
+  /* header .link li:nth-first-of-type(-n+2) img { */
+  header .link li:first-of-type img {
+    width: auto;
+    height: var(--small-ECsite);
+  }
+
+  .profile {
+    margin-top: 5px;
+    align-items: center;
+  }
+
+  .profile img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .explanation {
+    margin: 0 0 0 5px;
+  }
+
+  .explanation h1 {
+    font-size: 3rem;
+    line-height: 2.6rem;
+    margin: 0 auto .5rem 1rem;
+  }
+
+  .explanation p {
+    font-size: 1.6rem;
+    line-height: 1rem;
+    margin: .6rem 0;
+  }
+
+  .backgrnd {
+    margin-top: 10px;
+  }
+
+  #inside p {
+    margin: 0 auto 20px 20px;
+    text-align: left;
+    }
+  
+    #inside li {
+      display: block;
+    }
+  
+    #inside .pic  {
+      height: 240px;
+    }
+  
+    #inside .desc {
+      display: block;
+    }
+
+  .information {
+    margin-top: 30px;
+  }
+
+  .overview {
+    width: 28rem;
+    margin: 0 auto 10px calc(50% - 14rem + 2em);
+  }
+
+  .overview p {
+    margin: 2px 0;
+  }
+
+  .overview > p:nth-last-of-type(2) {
+    padding-left: 3em;
+    margin: 0px auto 2px;
+  }
+
+  .address p {
+    margin: 0;
+  }
+
+  .overview a {
+    line-height: 2.6rem;
+  }
+
+  .overview img {
+    height: var(--small-ECsite);
+  }
+
+  .overview > a:last-of-type {
+    font-size: 1.2rem;
+  }
+
+  .facebook {
+    margin-bottom: 2rem;
+  }
+
+  .goto-top a {
+    font-size: 1.4rem;
+  }
+}
