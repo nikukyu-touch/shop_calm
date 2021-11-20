@@ -7,15 +7,18 @@ html {
   --midium-link: 26px;
   --small-link: 18px;
   --small-ECsite: 18px;
+  --cncptlst-height:60px;
+  --cncptlst-small:20px;
+  --txtcolor: #000000;
 }
 
 /* リンク付きテキストの色を変えない */
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--txtcolor);
 }
-a:visited {
-  color: inherit;
+a:link, a:visited {
+  color: var(--txtcolor);
 }
 a[href^="tel:"]{
   pointer-events: none;
@@ -48,8 +51,9 @@ header .link {
   position: fixed;
   top: 0;
   width: 100%;
+  height: 32px;
   display: flex;
-  z-index: 1;
+  z-index: 9;
   justify-content: center;
   background-color: white;
 }
@@ -59,7 +63,7 @@ header .link h1 {
   font-size: 3.2rem;
   font-weight: bold;
   line-height: 3.2rem;
-  animation: fuwafuwa 3s infinite alternate ease-in-out ;
+  animation: fuwafuwa 3s infinite alternate ease-in-out;
 }
 
 @keyframes fuwafuwa {
@@ -76,7 +80,7 @@ header .link h1 {
 
 header .link ul {
   list-style: none;
-  margin: auto 2% auto 18%;
+  margin: auto 2% auto 30%;
   padding: 0;
   display: flex;
 }
@@ -89,10 +93,20 @@ header .link ul li {
 header .link ul a {
   font: bolder 2.2rem sans-serif;
   color: #3d3d3d;
+  display: block;
+  margin: 0;
+  height: var(--common-link);
+}
+
+header .link li:nth-of-type(-n+2) a {
+  border-bottom: 1px solid transparent;
+  transition: all .8s;
+}
+header .link li:nth-of-type(-n+2) a:hover {
+  border-bottom: 1px solid currentColor;
 }
 
 header .link ul img {
-  vertical-align: baseline;
   width: var(--common-link);
   height: var(--common-link);
 }
@@ -130,6 +144,7 @@ header .link li:first-of-type img {
   margin: 0 auto 0 2rem;
   font-size: 5rem;
   /* line-height: 4rem; */
+  animation: fuwafuwa 3s infinite alternate ease-in-out;
 }
 
 .explanation p {
@@ -137,38 +152,81 @@ header .link li:first-of-type img {
   margin: 1.2rem 0;
 }
 
-.explanation > p:last-of-type {
+.explanation > p:nth-of-type(2) {
   padding-left: 1em;
 }
 
-.backgrnd {
-  margin-top: 30px;
+.explanation > p:last-of-type {
+  font-size: 1.6rem;
+  padding-left: 3rem;
+  margin: 0;
+}
+
+main .backgrnd {
+  margin-top: 20px;
   width: 100%;
-  background: 47% 30%/cover url(../img/レディース・ファッション_m.jpg);
+  background: 47% 100%/cover url(../img/レディース・ファッション_m.jpg);
 }
 
 main .container {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 20px 0 4px;
 }
 
-#inside ul {
+ul.items {
   list-style: none;
-  padding: 0;
-  margin: 0 auto;
+  padding: 1%;
+  margin: 0 auto 16rem;
   max-width: 1024px;
 }
 
-#inside li {
+ul.items li {
+  height: var(--cncptlst-height);
+  text-align: left;
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 1.5s;
+}
+ul.items li.show {
+  opacity: 1;
+}
+ul.items li:nth-of-type(3n-1) {
+  text-align: center;
+  z-index: 2;
+}
+ul.items li:nth-of-type(3n) {
+  height: calc(var(--cncptlst-height) + 150px);
+  text-align: right;
+  z-index: 1;
+}
+
+ul.items img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+}
+
+ul#inside {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
   display: flex;
+  justify-content: space-evenly;
 }
 
-#inside li:nth-child(odd) {
-  flex-direction: row-reverse;
+#inside li {
+  margin-bottom: 20px;
+  width: 49%;
 }
 
-#inside .pic  {
-  flex: 1;
+#inside .pic {
   height: 480px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+#inside .pic.show {
+  opacity: 1;
 }
 
 #inside .pic img {
@@ -193,6 +251,10 @@ main .container {
 .overview {
   width: 30rem;
   text-align: left;
+  opacity: 0;
+}
+.overview.show {
+  /* opacity: 1; */
   animation: slideIn 1.2s cubic-bezier(0, .21, 0, 1) 1 forwards;
 }
 
@@ -203,8 +265,6 @@ main .container {
   }
   100% {
     transform: translateX(0);
-  }
-  100% {
     opacity: 1;
   }
 }
@@ -246,6 +306,11 @@ main .container {
   overflow: hidden;
   position: relative;
   padding-bottom: 40%;
+  opacity: 0;
+  transition: opacity 1.3s;
+}
+.gmap.show {
+  opacity: 1;
 }
 
 .gmap iframe {
@@ -256,29 +321,46 @@ main .container {
   height: 100%;
 }
 
-.facebook {
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+.sns {
+  margin: 6rem 0 3rem;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.facebook h1 {
+.sns h1 {
   font-size: 3rem;
-  margin: 5px auto;
+  margin: 0;
 }
 
-.facebook iframe {
-  max-width: 500px;
-  width: 100%;
+.twitter .goto-top {
+  display: none;
 }
 
 .goto-top {
-  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 
 .goto-top a {
-  margin-left: 2rem;
+  /* margin-left: 2rem; */
+  margin: 0;
   font-size: 1.8rem;
   font-weight: 550;
+  border-bottom: 1px solid transparent;
+  transition: all .8s;
+}
+.goto-top a:hover {
+  border-bottom: 1px solid currentColor;
+  animation: none;
+}
+.goto-top a:last-of-type {
+  font-size: 2.4rem;
+}
+.goto-top a img {
+  height: 1.1em;
+  vertical-align: sub;
 }
 
 footer {
@@ -288,11 +370,12 @@ footer {
 
 footer p {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
+  line-height: 1.6rem;
 }
 
 footer i {
-  font-size: .8rem;
+  font-size: 1rem;
 }
 
 /* medium screen */
@@ -319,9 +402,10 @@ footer i {
     margin: 0;
   }
 
-  /* header .link ul a {
-    font-size: 2.6rem;
-  } */
+  header .link ul a {
+    /* font-size: 2.2rem; */
+    height: var(--midium-link);
+  }
 
   header .link ul img {
     width: var(--midium-link);
@@ -344,8 +428,27 @@ footer i {
     margin: 1rem 0;
   }
 
-  #inside .pic  {
-    height: 420px;
+  ul.items {
+    max-width: 960px;
+  }
+
+  ul#inside {
+    max-width: 1024px;
+    display: block;
+  }
+
+  #inside li {
+    display: flex;
+    width: 100%;
+  }
+
+  #inside li:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  #inside .pic {
+    flex: 1;
+    height: 400px;
   }
 
   .information {
@@ -357,6 +460,8 @@ footer i {
   .overview {
     width: 34rem;
     margin: 0 0 22px 8%;
+  }
+  .overview.show {
     animation: slideIn 1s cubic-bezier(0, .21, 0, 1) 1 forwards;
   }
 
@@ -367,8 +472,6 @@ footer i {
     }
     100% {
       transform: translateY(0);
-    }
-    100% {
       opacity: 1;
     }
   }
@@ -398,6 +501,22 @@ footer i {
     width: 95%;
     margin: 0;
     padding-bottom: 56.25%;
+  }
+
+  .sns {
+    flex-wrap: wrap;
+  }
+
+  .goto-top a {
+    animation: flicker 1s infinite alternate ease-in-out;
+  }
+  @keyframes flicker {
+    0% {
+      border-bottom: 1px solid currentColor;
+    }
+    100% {
+      border-bottom: 1px solid transparent;
+    }
   }
 
   footer .keyword {
@@ -433,7 +552,7 @@ footer i {
   header .link ul {
     flex: 2;
     max-width: 226px;
-    /* margin: auto 2px 0 16%; */
+    margin-left: 12%;
     justify-content: space-between;
   }
 
@@ -444,6 +563,7 @@ footer i {
 
   header .link ul a {
     font-size: 1.5rem;
+    height: var(--small-link);
   }
 
   header .link ul img {
@@ -486,30 +606,50 @@ footer i {
 
   .explanation p {
     font-size: 1.6rem;
-    line-height: 1rem;
-    margin: .6rem 0;
+    margin: .3rem 0;
+  }
+  .explanation > p:last-of-type {
+    font-size: 1rem;
+    padding-left: 0;
   }
 
-  .backgrnd {
+  main .backgrnd {
     margin-top: 10px;
+  }
+
+  ul.items {
+    margin-bottom: 4rem;
+  }
+
+  ul.items li {
+    height: var(--cncptlst-small);
+  }
+  ul.items li:nth-of-type(3n) {
+    height: calc(var(--cncptlst-small) + 100px);
+  }
+
+  ul.items img {
+    width: 140px;
+    height: 120px;
   }
 
   #inside p {
     margin: 0 auto 20px 20px;
     text-align: left;
-    }
+  }
   
-    #inside li {
-      display: block;
-    }
-  
-    #inside .pic  {
-      height: 240px;
-    }
-  
-    #inside .desc {
-      display: block;
-    }
+  #inside li {
+    display: block;
+  }
+
+  #inside .pic {
+    width: 100%;
+    height: 240px;
+  }
+
+  #inside .desc {
+    display: block;
+  }
 
   .information {
     margin-top: 30px;
@@ -545,11 +685,38 @@ footer i {
     font-size: 1.2rem;
   }
 
+  .sns {
+    margin: 3rem 0 0;
+  }
+
+  .twitter .goto-top {
+    margin-top: 5px;
+    display: block;
+    text-align: left;
+  }
+
+  .sns .twitter .goto-top a {
+    font-size: 1rem;
+  }
+
   .facebook {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .facebook iframe {
+    max-width: 375px;
+    width: 100%;
   }
 
   .goto-top a {
     font-size: 1.4rem;
+  }
+  .goto-top a:last-of-type {
+    font-size: 1.8rem;
+  }
+
+  footer p {
+    font-size: 1rem;
   }
 }
