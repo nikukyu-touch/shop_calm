@@ -1,6 +1,8 @@
 /* common */
 html {
   font-size: 62.5%;
+  -webkit-scroll-behavior: smooth;
+  scroll-behavior: smooth;
   font-family: 'Comic Sans MS', cursive;
   /* リンクアイコンのサイズ */
   --common-link: 26px;
